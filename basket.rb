@@ -1,4 +1,5 @@
 class Basket
+	# All prices are in pence/cents for avoiding rounding errors.
 	CATALOG = [
 		{
 			name:"Jeans",
