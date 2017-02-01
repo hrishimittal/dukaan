@@ -19,13 +19,15 @@ class Basket
     }
   ]
 
-  def initialize(items = {J01:0, B01:0, S01:0}, total = 0)
-    @items = items
-    @total = total
+  def initialize
+    @items = Hash.new(0)
+    @total = 0
   end
 
   def add(product_code)
-    @items[product_code.to_sym] += 1
+    if product = find_product_in_catalog(product_code.to_sym)
+      @items[product_code.to_sym] += 1
+    end
   end
 
   def total
@@ -52,7 +54,7 @@ class Basket
     end
 
     def find_product_in_catalog(product_code)
-      CATALOG.select{|p| p[:code] == product_code }[0]
+      CATALOG.find{|p| p[:code] == product_code }
     end
 
     def calculate_delivery_charges(basket_total)
