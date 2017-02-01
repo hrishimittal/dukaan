@@ -25,8 +25,8 @@ class Basket
   end
 
   def add(product_code)
-    if product = find_product_in_catalog(product_code.to_sym)
-      @items[product_code.to_sym] += 1
+    if product = find_product_in_catalog(product_code)
+      @items[product_code] += 1
     end
   end
 
